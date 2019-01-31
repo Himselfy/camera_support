@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 class Camera {
   static const MethodChannel _channel =
-      const MethodChannel('com.flutter.plugins.camera');
+      const MethodChannel('camera_support');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');

@@ -39,6 +39,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Test app camera permissions are required to lunch the plugin </string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
