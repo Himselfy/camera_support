@@ -101,12 +101,15 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     var onFrameAvailable: (() -> Void)?
     var outputSampleBuffer : CMSampleBuffer? = nil
     var context :CIContext = CIContext.init(options: nil)
-    var converter : PixelConverter = PixelConverter.init(size: 1280, height: 720)
+    var converter : PixelConverter = PixelConverter.init(width: 1280, height: 720)
     var flashMode : AVCaptureDevice.FlashMode = AVCaptureDevice.FlashMode.auto
     
     public func copyPixelBuffer() -> Unmanaged<CVPixelBuffer>? {
         if outputSampleBuffer == nil { return nil }
         let imageBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(outputSampleBuffer!)!
+        var width = CVPixelBufferGetWidth(imageBuffer)
+        var height = CVPixelBufferGetHeight(imageBuffer)
+        
         var result = converter.convert(imageBuffer)
         return result;
         
@@ -141,7 +144,6 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
             try configureCameraDevice()
             try configureDeviceInput()
             configureDeviceOutput()
-            try configurePreview()
             self.captureSession?.startRunning()
         }
             
@@ -156,9 +158,9 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         
         switch UIDevice.current.orientation {
             case .landscapeRight:
-                connection.videoOrientation = .landscapeLeft
-            case .landscapeLeft:
                 connection.videoOrientation = .landscapeRight
+            case .landscapeLeft:
+                connection.videoOrientation = .landscapeLeft
             case .portrait:
                 connection.videoOrientation = .portrait
             case .portraitUpsideDown:
@@ -208,6 +210,7 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         self.videoOutput!.setSampleBufferDelegate(self, queue: DispatchQueue(label: "preview buffer"))
         if self.captureSession!.canAddOutput(self.videoOutput!) { self.captureSession!.addOutput(self.videoOutput!) }
         
+        self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1280x720
     }
     
     func takePicture(path: String){
@@ -224,22 +227,13 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
             do {
                 try data.write(to: URL(fileURLWithPath: self.currentPhotoFilePath), options: .atomic)
             }
-            catch { return }
+            catch {
+                return                
+            }
         }
     }
     
-    func configurePreview() throws {
- 
-        self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
-        self.previewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.previewLayer?.connection?.videoOrientation = .portrait
-        
-        previewView.layer.insertSublayer(self.previewLayer!, at: 0)
-        self.previewLayer?.frame = previewView.frame
-        
-        
-    }
-    
+
 
 
     

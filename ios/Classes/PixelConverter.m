@@ -8,8 +8,7 @@
 
 @implementation PixelConverter
 
-- (instancetype)initWithSize: (CGFloat)width
-                    height:(CGFloat)height {
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height {
     
     _previewSize = CGSizeMake(width,height);
     
