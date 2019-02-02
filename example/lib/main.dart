@@ -91,8 +91,23 @@ class _MyAppState extends State<MyApp> {
   int currentAspectRatioIndex;
 
   Future changeFlashMode() async {
-  
-    cameraController.setFlashMode(FlashMode.OFF);
+    var currentMode = await cameraController.getFlashMode();
+    var newFlashMode = FlashMode.AUTO;
+    switch(currentMode){
+      case FlashMode.AUTO:
+        newFlashMode = FlashMode.ON;
+        break;
+      case FlashMode.ON:
+        newFlashMode = FlashMode.OFF;
+        break;
+      case FlashMode.OFF:
+        newFlashMode = FlashMode.AUTO;
+        break;
+      case FlashMode.TORCH:
+        newFlashMode = FlashMode.AUTO;
+        break;
+    }
+    cameraController.setFlashMode(newFlashMode);
   }
 
   Future takePicture()async {
