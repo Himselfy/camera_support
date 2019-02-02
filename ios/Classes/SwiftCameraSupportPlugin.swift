@@ -44,6 +44,7 @@ public class SwiftCameraSupportPlugin: NSObject, FlutterPlugin {
     case "takePicture":
         var path = (call.arguments as! NSDictionary)["filePath"] as! String
         cameraHandler?.takePicture(path: path)
+        result(nil)
         break;
     case "getSupportedAspectRatios":
         //result.success(convertedAspectRatios);
