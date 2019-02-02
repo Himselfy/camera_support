@@ -1,12 +1,19 @@
-//
-//  PixelConverter.h
-//  camera_support
-//
-//  Created by Developer Taxxo on 31/01/2019.
-//
+#import <Foundation/Foundation.h>
+#import <libkern/OSAtomic.h>
+#import <AVFoundation/AVFoundation.h>
+#import <Accelerate/Accelerate.h>
+#import <CoreMotion/CoreMotion.h>
 
-#ifndef PixelConverter_h
-#define PixelConverter_h
+@interface PixelConverter : NSObject
 
+@property(readonly) CVPixelBufferRef volatile latestPixelBuffer;
+@property(nonatomic) vImage_Buffer destinationBuffer;
+@property(nonatomic) vImage_Buffer conversionBuffer;
+@property(readonly, nonatomic) CGSize previewSize;
 
-#endif /* PixelConverter_h */
+- (CVPixelBufferRef) convert: (CVPixelBufferRef)sourceBuffer;
+- (CVPixelBufferRef) convertYUVImageToBGRA:(CVPixelBufferRef)pixelBuffer;
+
+- (instancetype)initWithSize: (CGFloat)width
+                  height:(CGFloat)height;
+@end

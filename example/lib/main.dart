@@ -91,6 +91,7 @@ class _MyAppState extends State<MyApp> {
   int currentAspectRatioIndex;
 
   Future changeFlashMode() async {
+  
     cameraController.setFlashMode(FlashMode.OFF);
   }
 

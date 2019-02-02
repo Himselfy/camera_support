@@ -42,6 +42,8 @@ public class SwiftCameraSupportPlugin: NSObject, FlutterPlugin {
         result(textureId!);
         break;
     case "takePicture":
+        var path = (call.arguments as! NSDictionary)["filePath"] as! String
+        cameraHandler?.takePicture(path: path)
         break;
     case "getSupportedAspectRatios":
         //result.success(convertedAspectRatios);
@@ -55,13 +57,14 @@ public class SwiftCameraSupportPlugin: NSObject, FlutterPlugin {
         //result.success(aspectRatioMap);
         break;
     case "setFlashMode":
-        var flashMode = (call.arguments as! NSDictionary)["mode"];
-        //cameraHandler.setFlash(flashMode);
+        print(call.arguments)
+        let flashMode = (call.arguments as! NSDictionary)["mode"];
+        cameraHandler?.setFlashMode(mode: flashMode as! Int);
         result(nil);
         break;
     case "getFlashMode":
-        //var currentFlashMode = cameraHandler.getFlash();
-        //result.success(currentFlashMode);
+        var currentFlashMode = cameraHandler!.getFlashMode();
+        result(currentFlashMode);
         break;
     case "dispose":
         //disposeCamera();
@@ -83,45 +86,48 @@ public class TestTexture : NSObject, FlutterTexture {
 }
 
 @available(iOS 10.0, *)
-public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputSampleBufferDelegate {
+public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession?
     var captureDevice: AVCaptureDevice?
     var captureInput: AVCaptureDeviceInput?
     var captureOutput: AVCapturePhotoOutput?
     var videoOutput: AVCaptureVideoDataOutput?
     var previewView: UIView
+    var currentPhotoFilePath: String = ""
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var pixelBuffer: CVPixelBuffer?
+    var previewPixelBuffer: CVPixelBuffer?
     var onFrameAvailable: (() -> Void)?
-    var tempBuff: CVPixelBuffer?
     var outputSampleBuffer : CMSampleBuffer? = nil
+    var context :CIContext = CIContext.init(options: nil)
+    var converter : PixelConverter = PixelConverter.init(size: 1280, height: 720)
+    var flashMode : AVCaptureDevice.FlashMode = AVCaptureDevice.FlashMode.auto
     
     public func copyPixelBuffer() -> Unmanaged<CVPixelBuffer>? {
-        let tempImageBuffer = CMSampleBufferGetImageBuffer(outputSampleBuffer!);
         if outputSampleBuffer == nil { return nil }
         let imageBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(outputSampleBuffer!)!
-        let ciImage = CIImage(cvImageBuffer: imageBuffer)
-        let context:CIContext = CIContext.init(options: nil)
-
-        let width = CVPixelBufferGetWidth(tempImageBuffer!);
-        let height = CVPixelBufferGetHeight(tempImageBuffer!);
-
+        var result = converter.convert(imageBuffer)
+        return result;
         
-        if pixelBuffer == nil {
-            CVPixelBufferCreate(
-                kCFAllocatorDefault,
-                CVPixelBufferGetWidth(tempImageBuffer!),
-                CVPixelBufferGetHeight(tempImageBuffer!),
-                kCVPixelFormatType_32BGRA,//CVPixelBufferGetPixelFormatType(tempImageBuffer!),
-                CVBufferGetAttachments(tempImageBuffer!, .shouldPropagate),
-                &(self.pixelBuffer))
-            //CVPixelBufferCreate(kCFAllocatorDefault, 1200, 1200, kCVPixelFormatType_32BGRA, nil, &(self.pixelBuffer))
+    }
+    
+    public func setFlashMode(mode: Int){
+        if mode == 0 { flashMode = AVCaptureDevice.FlashMode.off }
+        if mode == 1 { flashMode = AVCaptureDevice.FlashMode.on }
+        if mode == 2 { flashMode = AVCaptureDevice.FlashMode.on }
+        if mode == 3 { flashMode = AVCaptureDevice.FlashMode.auto}
+    }
+    
+    public func getFlashMode() -> Int {
+        switch flashMode {
+        case AVCaptureDevice.FlashMode.on:
+            return 1;
+        case AVCaptureDevice.FlashMode.off:
+            return 0;
+        case AVCaptureDevice.FlashMode.auto:
+            return 3;
+        default:
+            return 3;
         }
-        
-        
-        context.render(ciImage, to: pixelBuffer!)
-        return Unmanaged.passRetained(pixelBuffer!)
-
     }
     
     override init(){
@@ -202,6 +208,24 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         
     }
     
+    func takePicture(path: String){
+        let settings = AVCapturePhotoSettings()
+        settings.flashMode = self.flashMode
+        currentPhotoFilePath = path
+        self.captureOutput?.capturePhoto(with: settings , delegate: self)
+    }
+    
+    public func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?,
+                        resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Swift.Error?) {
+        
+       if let buffer = photoSampleBuffer, let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil){
+            do {
+                try data.write(to: URL(fileURLWithPath: self.currentPhotoFilePath), options: .atomic)
+            }
+            catch { return }
+        }
+    }
+    
     func configurePreview() throws {
  
         self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
@@ -213,8 +237,11 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         
         
     }
-}
+    
 
+
+    
+}
 
 
 
