@@ -54,7 +54,8 @@ public class SwiftCameraSupportPlugin: NSObject, FlutterPlugin {
         result(nil);
         break;
     case "getAspectRatio":
-        //result.success(aspectRatioMap);
+        var params = ["x": 4, "y": 3];
+        result(params)
         break;
     case "setFlashMode":
         print(call.arguments)
