@@ -208,7 +208,7 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         self.videoOutput!.setSampleBufferDelegate(self, queue: DispatchQueue(label: "preview buffer"))
         if self.captureSession!.canAddOutput(self.videoOutput!) { self.captureSession!.addOutput(self.videoOutput!) }
         
-        self.captureSession?.sessionPreset = AVCaptureSession.Preset.high
+        self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1280x720
     }
     
     func takePicture(path: String){
