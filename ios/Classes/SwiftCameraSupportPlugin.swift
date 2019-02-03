@@ -101,14 +101,12 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     var onFrameAvailable: (() -> Void)?
     var outputSampleBuffer : CMSampleBuffer? = nil
     var context :CIContext = CIContext.init(options: nil)
-    var converter : PixelConverter = PixelConverter.init(width: 1280, height: 720)
+    var converter : PixelConverter = PixelConverter.init(size: 1280, height: 720)
     var flashMode : AVCaptureDevice.FlashMode = AVCaptureDevice.FlashMode.auto
     
     public func copyPixelBuffer() -> Unmanaged<CVPixelBuffer>? {
         if outputSampleBuffer == nil { return nil }
         let imageBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(outputSampleBuffer!)!
-        var width = CVPixelBufferGetWidth(imageBuffer)
-        var height = CVPixelBufferGetHeight(imageBuffer)
         
         var result = converter.convert(imageBuffer)
         return result;

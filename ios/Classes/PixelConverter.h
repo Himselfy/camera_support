@@ -14,6 +14,6 @@
 - (CVPixelBufferRef) convert: (CVPixelBufferRef)sourceBuffer;
 - (CVPixelBufferRef) convertYUVImageToBGRA:(CVPixelBufferRef)pixelBuffer;
 
-- (instancetype)initWithWidth: (CGFloat)width
+- (instancetype) initWithSize: (CGFloat)width
                   height:(CGFloat)height;
 @end
