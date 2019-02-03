@@ -101,15 +101,14 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     var onFrameAvailable: (() -> Void)?
     var outputSampleBuffer : CMSampleBuffer? = nil
     var context :CIContext = CIContext.init(options: nil)
-    var converter : PixelConverter = PixelConverter.init(size: 1280, height: 720)
+    var converter : PixelConverter? = nil
     var flashMode : AVCaptureDevice.FlashMode = AVCaptureDevice.FlashMode.auto
     
     public func copyPixelBuffer() -> Unmanaged<CVPixelBuffer>? {
         if outputSampleBuffer == nil { return nil }
         let imageBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(outputSampleBuffer!)!
         
-        var result = converter.convert(imageBuffer)
-        return result;
+        return converter!.convert(imageBuffer)
         
     }
     
@@ -156,9 +155,9 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         
         switch UIDevice.current.orientation {
             case .landscapeRight:
-                connection.videoOrientation = .landscapeRight
-            case .landscapeLeft:
                 connection.videoOrientation = .landscapeLeft
+            case .landscapeLeft:
+                connection.videoOrientation = .landscapeRight
             case .portrait:
                 connection.videoOrientation = .portrait
             case .portraitUpsideDown:
@@ -200,15 +199,31 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     
     func configureDeviceOutput() {
         self.captureOutput = AVCapturePhotoOutput()
+        self.captureOutput?.isHighResolutionCaptureEnabled = true
+        
+        
         if self.captureSession!.canAddOutput(self.captureOutput!) { captureSession!.addOutput(self.captureOutput!) }
         self.captureOutput!.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])], completionHandler: nil)
         
         self.videoOutput = AVCaptureVideoDataOutput()
+        self.videoOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey: kCVPixelFormatType_32BGRA] as [String : Any]
+        self.videoOutput?.alwaysDiscardsLateVideoFrames = true;
         
         self.videoOutput!.setSampleBufferDelegate(self, queue: DispatchQueue(label: "preview buffer"))
         if self.captureSession!.canAddOutput(self.videoOutput!) { self.captureSession!.addOutput(self.videoOutput!) }
         
-        self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1280x720
+        if self.captureSession!.canSetSessionPreset(AVCaptureSession.Preset.hd1920x1080){
+            self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1920x1080
+            self.converter = PixelConverter.init(size: 1920, height: 1080)
+        } else if self.captureSession!.canSetSessionPreset(AVCaptureSession.Preset.hd1280x720){
+            self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1280x720
+            self.converter = PixelConverter.init(size: 1280, height: 720)
+        } else {
+            self.captureSession?.sessionPreset = AVCaptureSession.Preset.vga640x480
+            self.converter = PixelConverter.init(size: 640, height: 480)
+        }
+        
+        self.captureSession?.sessionPreset = AVCaptureSession.Preset.hd1920x1080
     }
     
     func takePicture(path: String){

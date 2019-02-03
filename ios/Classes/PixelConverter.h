@@ -12,7 +12,6 @@
 @property(readonly, nonatomic) CGSize previewSize;
 
 - (CVPixelBufferRef) convert: (CVPixelBufferRef)sourceBuffer;
-- (CVPixelBufferRef) convertYUVImageToBGRA:(CVPixelBufferRef)pixelBuffer;
 
 - (instancetype) initWithSize: (CGFloat)width
                   height:(CGFloat)height;
