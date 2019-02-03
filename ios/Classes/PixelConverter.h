@@ -15,4 +15,6 @@
 
 - (instancetype) initWithSize: (CGFloat)width
                   height:(CGFloat)height;
+- (void) dealloc;
+
 @end

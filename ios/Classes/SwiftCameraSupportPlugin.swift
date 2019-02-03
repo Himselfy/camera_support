@@ -112,6 +112,16 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
         
     }
     
+    public func close(){
+        captureSession?.stopRunning();
+        for input in captureSession!.inputs {
+            captureSession?.removeInput(input)
+        }
+        for output in captureSession!.outputs {
+            captureSession?.removeOutput(output)
+        }
+    }
+    
     public func setFlashMode(mode: Int){
         if mode == 0 { flashMode = AVCaptureDevice.FlashMode.off }
         if mode == 1 { flashMode = AVCaptureDevice.FlashMode.on }

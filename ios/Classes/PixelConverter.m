@@ -37,7 +37,11 @@
     return pixelBuffer;
 }
 
-
+- (void) dealloc {
+    if(_latestPixelBuffer){
+        CFRelease(_latestPixelBuffer);
+    }
+}
 
 @end
 
