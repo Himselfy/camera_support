@@ -246,9 +246,15 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     public func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?,
                         resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Swift.Error?) {
         
-       if let buffer = photoSampleBuffer, let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil){
+       if let buffer = photoSampleBuffer{
             do {
-                try data.write(to: URL(fileURLWithPath: self.currentPhotoFilePath), options: .atomic)
+                let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil)
+                
+                let image = UIImage(data: data!)
+                let rotatedImage = image?.fixOrientation()
+                let roatedData = UIImageJPEGRepresentation(rotatedImage!,1.0);
+                
+                try roatedData?.write(to: URL(fileURLWithPath: self.currentPhotoFilePath), options: .atomic)
             }
             catch {
                 return                
@@ -257,9 +263,22 @@ public class CameraHandler : NSObject, FlutterTexture, AVCaptureVideoDataOutputS
     }
     
 
+}
 
-
-    
+extension UIImage {
+    func fixOrientation() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        if let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return normalizedImage
+        } else {
+            return self
+        }
+    }
 }
 
 
