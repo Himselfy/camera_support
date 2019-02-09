@@ -48,7 +48,7 @@ public class CameraSupportPlugin implements MethodCallHandler, CameraViewImpl.Ca
   private Application.ActivityLifecycleCallbacks activityLifecycleCallbacks;
 
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "com.flutter.plugins.camera");
+    final MethodChannel channel = new MethodChannel(registrar.messenger(), "camera_support");
     channel.setMethodCallHandler(new CameraSupportPlugin(registrar,registrar.view(),registrar.activity()));
   }
 
