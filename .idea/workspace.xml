@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="677560f9-51a2-4214-b9b4-37e7f6360410" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_for_Android.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_for_Android.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/api14/com/google/android/cameraview/Camera1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/api21/com/google/android/cameraview/Camera2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/api23/com/google/android/cameraview/Camera2Api23.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/AspectRatio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/CameraViewImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/PreviewImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/Size.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/SizeMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/camera_support.iml" beforeDir="false" afterPath="$PROJECT_DIR$/camera_support.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/api/v14/Camera1.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/api/v14/Camera1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/api/v21/Camera2.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/api/v21/Camera2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/AspectRatio.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/AspectRatio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/Size.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/SizeMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/SizeMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/view/FlutterSurfaceView.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/view/FlutterSurfaceView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -42,32 +36,79 @@
     <session id="-1903285098">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.0" value="5" />
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.0" value="7" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="dart" value="3" />
-          <entry key="java" value="4" />
+          <entry key="dart" value="4" />
+          <entry key="java" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Dart" value="3" />
-          <entry key="JAVA" value="4" />
+          <entry key="Dart" value="4" />
+          <entry key="JAVA" value="8" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/camera_support.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/view/FlutterSurfaceView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/SizeMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#2476#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/CameraSupportPlugin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1139">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/SizeMap.java" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
@@ -80,6 +121,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
+              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
+              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
+              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-excluded-files" value="false" />
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -116,45 +186,23 @@
               <item name="plugin" type="1f31426a:PackageElementNode" />
               <item name="base" type="1f31426a:PackageElementNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
             <path>
-              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
-              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
-              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
-              <item name="camera_support" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="camera_support" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="camera_support" type="58d84e3e:PackageViewProjectNode" />
+              <item name="camera_support_android" type="616d4139:PackageViewModuleNode" />
+              <item name="com.eserviceplatform.mobile.camerasupport" type="1f31426a:PackageElementNode" />
+              <item name="plugin" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
         </subPane>
-        <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -187,6 +235,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Captures" order="1" side_tool="true" />
@@ -224,17 +273,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/android/src/main/base/com/google/android/cameraview/AspectRatio.java" />
     <entry file="file://$PROJECT_DIR$/android/src/main/api14/com/google/android/cameraview/Camera1.java" />
-    <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/CameraSupportPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/camera_support.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="15" column="68" lean-forward="true" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+          <caret line="15" column="68" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/view/FlutterSurfaceView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/plugin/base/SizeMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#2476#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/main/java/com/eserviceplatform/mobile/camerasupport/CameraSupportPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1139">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>

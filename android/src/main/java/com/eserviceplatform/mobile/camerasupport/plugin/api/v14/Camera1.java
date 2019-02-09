@@ -4,8 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Build;
-import android.support.v4.util.SparseArrayCompat;
-import android.view.SurfaceHolder;
+import androidx.collection.SparseArrayCompat;
 
 import com.eserviceplatform.mobile.camerasupport.plugin.base.AspectRatio;
 import com.eserviceplatform.mobile.camerasupport.plugin.base.CameraViewImpl;
